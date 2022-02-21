@@ -93,3 +93,18 @@ df.write \
 .save()
 
 
+
+# COMMAND ----------
+
+import pyodbc
+conn = pyodbc.conect('DRIVER={ODBC Driver 17 for SQL Server};'
+                    'SERVER=<Enter SQL Server Name Here>.database.windows.net;'
+                    'DATABASE=<Enter Database Name Here>;UID=<Enter Username Here>;'
+                    'PWD=<Enter Password Here>')
+cursor = conn.cursor()
+conn.autocommit = True
+cursor.execute(finalStatement)
+
+conn.close()
+
+return finalStatement
